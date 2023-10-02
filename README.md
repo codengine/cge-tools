@@ -4,6 +4,10 @@
 
 A collection of tools that allows the modification (and translation) of cge/cge2-games, namely Sołtys and Sfinx.
 
+## Requirements
+
+You need to use .net 6.0 in order to use the tools provided within this repository.
+
 ## Usage "cft-converter"
 
 This tool is used to convert fonts for further editing. The process involves the conversion of the font to png first, editing afterwards and conversion back to ".cft".
