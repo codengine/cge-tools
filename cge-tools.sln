@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CftConverter", "CftConverter\CftConverter.csproj", "{EB3A45E7-273F-4D07-8DC8-556179A0953A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VbmConverter", "VbmConverter\VbmConverter.csproj", "{41E24DAB-D791-434F-A628-729F45920FAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB3A45E7-273F-4D07-8DC8-556179A0953A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB3A45E7-273F-4D07-8DC8-556179A0953A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB3A45E7-273F-4D07-8DC8-556179A0953A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB3A45E7-273F-4D07-8DC8-556179A0953A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E24DAB-D791-434F-A628-729F45920FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E24DAB-D791-434F-A628-729F45920FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E24DAB-D791-434F-A628-729F45920FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E24DAB-D791-434F-A628-729F45920FAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
