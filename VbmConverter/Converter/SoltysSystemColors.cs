@@ -1,11 +1,13 @@
-﻿namespace CgeTools.VbmConverter.Converter;
+﻿using SixLabors.ImageSharp.PixelFormats;
+
+namespace CgeTools.VbmConverter.Converter;
 
 public static class SoltysSystemColors
 {
     private static readonly Rgb24 Black = new(0, 0, 0);
 
     private static readonly Dac[] Gst =
-    {
+    [
         new() { R = 0, G = 60, B = 0 }, // 198
         new() { R = 0, G = 104, B = 0 }, // 199
         new() { R = 20, G = 172, B = 0 }, // 200
@@ -64,7 +66,7 @@ public static class SoltysSystemColors
         new() { R = 0, G = 214, B = 255 }, // 253
         new() { R = 96, G = 224, B = 96 }, // 254
         new() { R = 255, G = 255, B = 255 } // 255
-    };
+    ];
 
     public static void Modify(Palette? palette)
     {

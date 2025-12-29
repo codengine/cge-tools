@@ -1,4 +1,7 @@
-﻿namespace CgeTools.VbmConverter.Converter;
+﻿using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+
+namespace CgeTools.VbmConverter.Converter;
 
 // Convert images from and to .vbm files
 // The majority of this code comes from ScummVM (https://github.com/scummvm/scummvm/tree/master/engines/cge)

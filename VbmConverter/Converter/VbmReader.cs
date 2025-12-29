@@ -1,4 +1,6 @@
-﻿namespace CgeTools.VbmConverter.Converter;
+﻿using SixLabors.ImageSharp.PixelFormats;
+
+namespace CgeTools.VbmConverter.Converter;
 
 public static class VbmReader
 {

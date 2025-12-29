@@ -3,7 +3,7 @@ using CommandLine.Text;
 
 namespace CgeTools.VbmConverter;
 
-[Verb("palettes", aliases: new[] { "pal", "p" }, HelpText = "Extract palettes out of .vbm files")]
+[Verb("palettes", aliases: ["pal", "p"], HelpText = "Extract palettes out of .vbm files")]
 public class PalettesCmdLineOptions : BaseCmdLineOptions
 {
     [Usage(ApplicationAlias = "vbm-converter")]

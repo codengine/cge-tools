@@ -6,7 +6,7 @@ A collection of tools that allows the modification (and translation) of cge/cge2
 
 ## Requirements
 
-You need to use .net 6.0 in order to use the tools provided within this repository.
+You need to use .net 8.0 in order to use the tools provided within this repository.
 
 ## Usage "cft-converter"
 

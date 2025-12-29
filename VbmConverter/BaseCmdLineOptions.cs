@@ -1,5 +1,7 @@
 ﻿using CommandLine;
 
+#pragma warning disable CS8618
+
 namespace CgeTools.VbmConverter;
 
 public abstract class BaseCmdLineOptions

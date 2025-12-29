@@ -1,4 +1,6 @@
-﻿namespace CgeTools.VbmConverter.Converter;
+﻿using SixLabors.ImageSharp.PixelFormats;
+
+namespace CgeTools.VbmConverter.Converter;
 
 public class Palette
 {
@@ -19,12 +21,9 @@ public class Palette
 
     private static Rgb24[] ValidateColors(Rgb24[] colors)
     {
-        if (colors.Length != CountColorsPerPalette)
-        {
-            throw new ArgumentException($"Expected {CountColorsPerPalette} colors, but received {colors.Length}");
-        }
-
-        return colors;
+        return colors.Length != CountColorsPerPalette
+            ? throw new ArgumentException($"Expected {CountColorsPerPalette} colors, but received {colors.Length}")
+            : colors;
     }
 
     public void WriteToAct(string outp)

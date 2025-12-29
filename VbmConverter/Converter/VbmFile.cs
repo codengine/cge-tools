@@ -1,4 +1,8 @@
-﻿namespace CgeTools.VbmConverter.Converter;
+﻿using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
+
+namespace CgeTools.VbmConverter.Converter;
 
 public class VbmFile
 {
@@ -99,11 +103,6 @@ public class VbmFile
 
     private Rgb24 GetColorFromPalette(byte colorIndex)
     {
-        if (Palette == null)
-        {
-            throw new Exception("No palette set");
-        }
-
-        return Palette[colorIndex];
+        return Palette?[colorIndex] ?? throw new Exception("No palette set");
     }
 }

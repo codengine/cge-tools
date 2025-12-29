@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace CgeTools.VbmConverter.Converter;
 
@@ -24,7 +25,7 @@ public static class Utils
         }
     }
 
-    private static IEnumerable<byte> GetBytes<T>(IEnumerable<T> elements) where T : struct
+    private static byte[] GetBytes<T>(IEnumerable<T> elements) where T : struct
     {
         var enumerable = elements as T[] ?? elements.ToArray();
         var len = enumerable.Length;

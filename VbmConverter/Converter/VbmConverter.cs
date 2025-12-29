@@ -1,4 +1,7 @@
-﻿namespace CgeTools.VbmConverter.Converter;
+﻿using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+
+namespace CgeTools.VbmConverter.Converter;
 
 public static class VbmConverter
 {
@@ -112,7 +115,7 @@ public static class VbmConverter
         Utils.SavePaletteMap(paletteColors, outputPath);
     }
 
-    private static Palette? FindPalette(string filename, IReadOnlyDictionary<string, Palette>? paletteFiles)
+    private static Palette? FindPalette(string filename, Dictionary<string, Palette>? paletteFiles)
     {
         var fnLower = filename.ToLower();
 
@@ -230,7 +233,7 @@ public static class VbmConverter
         }
     }
 
-    private static IEnumerable<string> GetFiles(BaseCmdLineOptions options, string fnPattern)
+    private static string[] GetFiles(BaseCmdLineOptions options, string fnPattern)
     {
         if (Directory.Exists(options.InputPath))
         {
@@ -241,11 +244,8 @@ public static class VbmConverter
             return Directory.GetFiles(options.InputPath, fnPattern, enumerationOptions);
         }
 
-        if (File.Exists(options.InputPath))
-        {
-            return new[] { options.InputPath };
-        }
-
-        throw new ValidationException($"Given input path \"{options.InputPath}\" does not exist");
+        return File.Exists(options.InputPath)
+            ? [options.InputPath]
+            : throw new ValidationException($"Given input path \"{options.InputPath}\" does not exist");
     }
 }

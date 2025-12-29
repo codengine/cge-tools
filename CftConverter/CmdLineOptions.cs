@@ -1,6 +1,8 @@
 ﻿using CommandLine;
 using CommandLine.Text;
 
+#pragma warning disable CS8618
+
 namespace CgeTools.CftConverter;
 
 public class CmdLineOptions
