@@ -808,3 +808,4 @@ FodyWeavers.xsd
 
 # Android studio 3.1+ serialized cache file
 
+dist/

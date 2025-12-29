@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Publish (${{ matrix.rid }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            rid: linux-x64
+          - os: windows-latest
+            rid: win-x64
+          - os: windows-latest
+            rid: win-x86
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+          cache: true
+          cache-dependency-path: |
+            **/*.csproj
+
+      - name: Restore
+        run: dotnet restore cge-tools.sln
+
+      - name: Publish (Linux)
+        if: runner.os == 'Linux'
+        env:
+          RID: ${{ matrix.rid }}
+        run: |
+          set -euo pipefail
+          rm -rf dist
+          dotnet publish CftConverter/CftConverter.csproj -c Release -r "$RID" --self-contained false -o "dist/$RID/cft-converter"
+          dotnet publish VbmConverter/VbmConverter.csproj -c Release -r "$RID" --self-contained false -o "dist/$RID/vbm-converter"
+
+      - name: Package (Linux)
+        if: runner.os == 'Linux'
+        env:
+          RID: ${{ matrix.rid }}
+        run: |
+          set -euo pipefail
+          cd "dist/$RID"
+          zip -r "../../cge-tools-$RID.zip" .
+
+      - name: Publish (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        env:
+          RID: ${{ matrix.rid }}
+        run: |
+          Remove-Item -Recurse -Force dist -ErrorAction SilentlyContinue
+          dotnet publish CftConverter/CftConverter.csproj -c Release -r $env:RID --self-contained false -o dist/$env:RID/cft-converter
+          dotnet publish VbmConverter/VbmConverter.csproj -c Release -r $env:RID --self-contained false -o dist/$env:RID/vbm-converter
+
+      - name: Package (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        env:
+          RID: ${{ matrix.rid }}
+        run: |
+          Compress-Archive -Path dist/$env:RID/* -DestinationPath cge-tools-$env:RID.zip -Force
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cge-tools-${{ matrix.rid }}
+          path: cge-tools-${{ matrix.rid }}.zip
