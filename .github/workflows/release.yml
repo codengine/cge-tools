@@ -42,8 +42,8 @@ jobs:
       - name: Restore
         run: dotnet restore cge-tools.sln
 
-      - name: Publish (Linux)
-        if: runner.os == 'Linux'
+      - name: Publish (Linux/macOS)
+        if: runner.os != 'Windows'
         env:
           RID: ${{ matrix.rid }}
         run: |
@@ -52,8 +52,8 @@ jobs:
           dotnet publish CftConverter/CftConverter.csproj -c Release -r "$RID" --self-contained false -o "dist/$RID/cft-converter"
           dotnet publish VbmConverter/VbmConverter.csproj -c Release -r "$RID" --self-contained false -o "dist/$RID/vbm-converter"
 
-      - name: Package (Linux)
-        if: runner.os == 'Linux'
+      - name: Package (Linux/macOS)
+        if: runner.os != 'Windows'
         env:
           RID: ${{ matrix.rid }}
         run: |
